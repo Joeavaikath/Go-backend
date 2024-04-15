@@ -1,3 +1,4 @@
+// Wraps around the return structs to give it the values to which it should json marshal
 package main
 
 import (
@@ -41,6 +42,14 @@ func databaseFeedtoFeed(dbFeed database.Feed) Feed {
 		UpdatedAt: dbFeed.UpdatedAt,
 		Name:      dbFeed.Name,
 		Url:       dbFeed.Url,
-		UserID:    dbFeed.ID,
+		UserID:    dbFeed.UserID,
 	}
+}
+
+func databaseFeedstoFeeds(dbFeeds []database.Feed) []Feed {
+	feeds := []Feed{}
+	for _, dbFeed := range dbFeeds {
+		feeds = append(feeds, databaseFeedtoFeed((dbFeed)))
+	}
+	return feeds
 }
