@@ -12,7 +12,7 @@ import (
 
 func (apiCfg *apiConfig) handlerCreateFeed(w http.ResponseWriter, r *http.Request, user database.User) {
 	type parameters struct {
-		Name string `json: "name"`
+		Name string `json:"name"`
 		URL  string `json:"url"`
 	}
 	decoder := json.NewDecoder(r.Body)
